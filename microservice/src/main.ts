@@ -3,11 +3,19 @@ import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
+  // TCP transport microservice
+  // const microserviceOptions = {
+  //   transport: Transport.TCP,
+  //   options: {
+  //     host: '127.0.0.1',
+  //     port: 8877,
+  //   },
+  // };
+
   const microserviceOptions = {
-    transport: Transport.TCP,
+    transport: Transport.REDIS,
     options: {
-      host: '127.0.0.1',
-      port: 8877,
+      url: 'redis://localhost:6379',
     },
   };
 

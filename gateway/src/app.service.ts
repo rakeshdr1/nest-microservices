@@ -10,12 +10,20 @@ export class AppService {
   private client: ClientProxy;
   constructor() {
     this.client = ClientProxyFactory.create({
-      transport: Transport.TCP,
+      transport: Transport.REDIS,
       options: {
-        host: '127.0.0.1',
-        port: 8877,
+        url: 'redis://localhost:6379',
       },
     });
+
+    // TCP transport
+    // this.client = ClientProxyFactory.create({
+    //   transport: Transport.TCP,
+    //   options: {
+    //     host: '127.0.0.1',
+    //     port: 8877,
+    //   },
+    // });
   }
 
   addNumbers(data: number[]) {
